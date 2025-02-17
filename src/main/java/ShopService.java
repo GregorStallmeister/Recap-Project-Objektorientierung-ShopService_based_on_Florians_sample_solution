@@ -4,8 +4,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class ShopService {
-    private ProductRepo productRepo = new ProductRepo();
-    private OrderRepo orderRepo = new OrderMapRepo();
+    private final ProductRepo productRepo = new ProductRepo();
+    private final OrderRepo orderRepo = new OrderMapRepo();
 
     public Order addOrder(List<String> productIds) {
         List<Product> products = new ArrayList<>();
