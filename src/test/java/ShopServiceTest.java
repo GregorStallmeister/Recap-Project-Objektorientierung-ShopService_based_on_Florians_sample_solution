@@ -45,7 +45,7 @@ class ShopServiceTest {
         List<Order> orders = shopService.getOrdersByStatus(OrderStatus.PROCESSING);
 
         // then
-        assertEquals("1", orders.get(0).products().get(0).id());
+        assertEquals("1", orders.getFirst().products().getFirst().id());
     }
 
     @Test
@@ -73,6 +73,6 @@ class ShopServiceTest {
         shopService.updateOrder(addedOrder.id(), OrderStatus.IN_DELIVERY);
 
         // then
-        assertEquals(shopService.getOrdersByStatus(OrderStatus.IN_DELIVERY).get(0).id(), addedOrder.id());
+        assertEquals(shopService.getOrdersByStatus(OrderStatus.IN_DELIVERY).getFirst().id(), addedOrder.id());
     }
 }
