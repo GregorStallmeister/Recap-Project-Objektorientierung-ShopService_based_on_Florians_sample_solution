@@ -45,7 +45,7 @@ class ShopServiceTest {
         List<Order> orders = shopService.getOrdersByStatus(OrderStatus.PROCESSING);
 
         // then
-        assertTrue(orders.get(0).products().get(0).id().equals("1"));
+        assertEquals("1", orders.get(0).products().get(0).id());
     }
 
     @Test
