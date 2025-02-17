@@ -30,4 +30,12 @@ public class ShopService {
                .filter(order -> order.orderStatus().equals(orderStatus))
                .toList();
     }
+
+    public void updateOrder(String orderID, OrderStatus newStatus) {
+        Order order = orderRepo.getOrderById(orderID);
+
+        Order modifiedOrder = order.withOrderStatus(newStatus);
+        orderRepo.removeOrder(orderID);
+        orderRepo.addOrder(modifiedOrder);
+    }
 }
