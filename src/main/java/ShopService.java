@@ -1,3 +1,8 @@
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.*;
 
 public class ShopService {
@@ -15,7 +20,7 @@ public class ShopService {
             products.add(productToOrder.get());
         }
 
-        Order newOrder = new Order(UUID.randomUUID().toString(), products, OrderStatus.PROCESSING);
+        Order newOrder = new Order(UUID.randomUUID().toString(), products, OrderStatus.PROCESSING, Instant.now());
 
         return orderRepo.addOrder(newOrder);
     }
@@ -25,5 +30,13 @@ public class ShopService {
                .stream()
                .filter(order -> order.orderStatus().equals(orderStatus))
                .toList();
+    }
+
+    public void updateOrder(String orderID, OrderStatus newStatus) {
+        Order order = orderRepo.getOrderById(orderID);
+
+        Order modifiedOrder = order.withOrderStatus(newStatus);
+        orderRepo.removeOrder(orderID);
+        orderRepo.addOrder(modifiedOrder);
     }
 }
