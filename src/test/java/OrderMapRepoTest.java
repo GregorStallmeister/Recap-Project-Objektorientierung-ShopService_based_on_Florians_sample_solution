@@ -41,8 +41,6 @@ class OrderMapRepoTest {
         Order actual = repo.getOrderById("1");
 
         //THEN
-        Product product1 = new Product("1", "Apfel");
-
         assertEquals(actual, newOrder);
     }
 
