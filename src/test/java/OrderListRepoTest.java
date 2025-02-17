@@ -13,6 +13,8 @@ class OrderListRepoTest {
         //GIVEN
         OrderListRepo repo = new OrderListRepo();
 
+        // this comment is only to force pushing this test to GitHub!
+
         Product product = new Product("1", "Apfel");
         Order newOrder = new Order("1", List.of(product), OrderStatus.PROCESSING, Instant.now());
         repo.addOrder(newOrder);
