@@ -14,7 +14,8 @@ class OrderMapRepoTest {
         OrderMapRepo repo = new OrderMapRepo();
 
         Product product = new Product("1", "Apfel");
-        Order newOrder = new Order("1", List.of(product), OrderStatus.PROCESSING, Instant.now());
+        Instant instant = Instant.now();
+        Order newOrder = new Order("1", List.of(product), OrderStatus.PROCESSING, instant);
         repo.addOrder(newOrder);
 
         //WHEN
@@ -23,7 +24,7 @@ class OrderMapRepoTest {
         //THEN
         List<Order> expected = new ArrayList<>();
         Product product1 = new Product("1", "Apfel");
-        expected.add(new Order("1", List.of(product1), OrderStatus.PROCESSING, Instant.now()));
+        expected.add(new Order("1", List.of(product1), OrderStatus.PROCESSING, instant));
 
         assertEquals(actual, expected);
     }
