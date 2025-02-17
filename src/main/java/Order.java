@@ -10,7 +10,4 @@ public record Order(
         OrderStatus orderStatus,
         Instant orderDate
 ) {
-//    public Order withStatus(OrderStatus newStatus) {
-//        return new Order(this.id, this.products, newStatus);
-//    }
 }
