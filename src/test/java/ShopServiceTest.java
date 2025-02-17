@@ -61,4 +61,18 @@ class ShopServiceTest {
         // then
         assertTrue(orders.isEmpty());
     }
+
+    @Test
+    void updateOrder() {
+        // given
+        ShopService shopService = new ShopService();
+        List<String> productIDs = List.of("1");
+        Order addedOrder = shopService.addOrder(productIDs);
+
+        // when
+        shopService.updateOrder(addedOrder.id(), OrderStatus.IN_DELIVERY);
+
+        // then
+        assertEquals(shopService.getOrdersByStatus(OrderStatus.IN_DELIVERY).get(0).id(), addedOrder.id());
+    }
 }
