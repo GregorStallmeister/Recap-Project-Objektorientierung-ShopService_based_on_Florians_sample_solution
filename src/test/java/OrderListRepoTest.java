@@ -24,7 +24,7 @@ class OrderListRepoTest {
         //THEN
         List<Order> expected = new ArrayList<>();
         Product product1 = new Product("1", "Apfel");
-        expected.add(new Order("1", List.of(product1), OrderStatus.PROCESSING, instant);
+        expected.add(new Order("1", List.of(product1), OrderStatus.PROCESSING, instant));
 
         assertEquals(actual, expected);
     }
