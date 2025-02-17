@@ -33,4 +33,32 @@ class ShopServiceTest {
         //THEN
         assertNull(actual);
     }
+
+    @Test
+    void getOrdersByStatusExpectedOneWhenOneWithSpecifiedStatusAdded() {
+        // given
+        ShopService shopService = new ShopService();
+        List<String> productIDs = List.of("1");
+        shopService.addOrder(productIDs);
+
+        // when
+        List<Order> orders = shopService.getOrdersByStatus(OrderStatus.PROCESSING);
+
+        // then
+        assertTrue(orders.get(0).products().get(0).id().equals("1"));
+    }
+
+    @Test
+    void getOrdersByStatusExpectedEmptyListWhenOneWithOtherThanSpecifiedStatusAdded() {
+        // given
+        ShopService shopService = new ShopService();
+        List<String> productIDs = List.of("1");
+        shopService.addOrder(productIDs);
+
+        // when
+        List<Order> orders = shopService.getOrdersByStatus(OrderStatus.COMPLETED);
+
+        // then
+        assertTrue(orders.isEmpty());
+    }
 }
